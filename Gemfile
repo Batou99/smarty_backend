@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_model_serializers'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
