@@ -6,4 +6,10 @@ class DeviceType < ActiveRecord::Base
 
 
   validates :name, uniqueness: true, presence: true
+
+  after_update :notify
+
+  def notify
+    devices.map(&:notify)
+  end
 end
