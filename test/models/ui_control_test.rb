@@ -2,6 +2,24 @@ require 'test_helper'
 
 class UiControlTest < ActiveSupport::TestCase
 
+  context "validation" do
+
+    setup do
+      @ui_control = build(:ui_control)
+    end
+
+    should "be valid if default_value is included in values" do
+      @ui_control.default_value = @ui_control.values.first
+      assert @ui_control.valid?
+    end
+
+    should "be invalid if default_value is not included in values" do
+      @ui_control.default_value = 'Fake'
+      assert !@ui_control.valid?
+    end
+
+  end
+
   context "#notify" do
 
     setup do
