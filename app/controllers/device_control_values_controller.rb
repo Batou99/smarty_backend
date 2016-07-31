@@ -4,12 +4,15 @@ class DeviceControlValuesController < ApplicationController
 
   def update
     dcv = DeviceControlValue.find_by_id(params[:id])
-    if dcv
-      set_value(dcv, params[:value])
-      dcv.save
+    msg = "DeviceControlValue not found"
+    render(json: { status: "error", message: msg }, status: 404) and return unless dcv
+    old_value = dcv.value
+    set_value(dcv, params[:value])
+    if dcv.save
+      logger.info("INFO **** #{dcv.control.display_name} changed from #{old_value} to #{dcv.value} ****")
       render :json => {:status => "ok"}, :status => 200
     else
-      render(:json => {:status => "error", :message => "DeviceControlValue not found"}, :status => 404)
+      render(json: { status: "error", message: dcv.errors }, status: 500)
     end
   end
 
