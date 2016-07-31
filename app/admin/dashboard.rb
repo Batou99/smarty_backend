@@ -145,7 +145,7 @@ ActiveAdmin.register Device do
       device.device_type.name
     end
     column :controls do |device|
-      device.device_type.controls.map(&:display_name).map(&:capitalize).join(', ')
+      device.device_control_values.map { |dcv| "#{dcv.control.display_name} (#{dcv.value})" }.map(&:capitalize).join(', ')
     end
     actions
   end
@@ -157,7 +157,7 @@ ActiveAdmin.register Device do
       row :ip_address
       row :device_type
       row :controls do
-        device.device_type.controls.map(&:display_name).map(&:capitalize).join(', ')
+        device.device_control_values.map { |dcv| "#{dcv.control.display_name} (#{dcv.value})" }.map(&:capitalize).join(', ')
       end
     end
 
