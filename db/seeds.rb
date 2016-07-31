@@ -9,14 +9,14 @@
 
 UiControl.delete_all
 slider_ui = UiControl.create(kind: 'slider',
-                             values: ActiveSupport::JSON.encode((0..100).to_a),
-                             default_value: ActiveSupport::JSON.encode(50))
+                             values: (0..100).to_a,
+                             default_value: 50)
 button_ui = UiControl.create(kind: 'button',
-                             values: ActiveSupport::JSON.encode([0, 1]),
-                             default_value: ActiveSupport::JSON.encode(0))
+                             values: [0, 1],
+                             default_value: 0)
 select_ui = UiControl.create(kind: 'select',
-                             values: ActiveSupport::JSON.encode([:a, :b, :c]),
-                             default_value: ActiveSupport::JSON.encode('a'))
+                             values: [:a, :b, :c],
+                             default_value: 'a')
 
 Control.delete_all
 volume_slider     = Control.create(display_name: 'Volume', ui_control: slider_ui)

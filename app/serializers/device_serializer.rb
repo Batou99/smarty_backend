@@ -11,7 +11,8 @@ class DeviceSerializer < ActiveModel::Serializer
         id:     dcv.id,
         name:   dcv.control.display_name,
         type:   dcv.control.ui_control.kind,
-        value:  ActiveSupport::JSON.decode(dcv.value)
+        value:  dcv.value,
+        possible_values: dcv.control.ui_control.values
       }
     end
   end
