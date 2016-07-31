@@ -30,6 +30,6 @@ sony_audio    = DeviceType.create(name: 'Sony Audio', controls: [power_button, p
 apple_tv      = DeviceType.create(name: 'Apple TV Video', controls: [volume_slider, brightness_slider, power_button])
 
 Device.delete_all
-Device.create(name: 'Front Audio', ip_address: '192.168.1.10', device_type: sony_audio)
-Device.create(name: 'Rear Audio',  ip_address: '192.168.1.11', device_type: samsung_audio)
-Device.create(name: 'Apple TV',    ip_address: '192.168.1.12', device_type: apple_tv)
+Device.create(name: 'Front Audio',      ip_address: '192.168.1.10', device_type: sony_audio)
+Device.create(name: 'Rear Audio',       ip_address: '192.168.1.11', device_type: samsung_audio)
+Device.create(name: 'Guest room video', ip_address: '192.168.1.12', device_type: apple_tv)
