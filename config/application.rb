@@ -32,5 +32,7 @@ module Smarty
         resource '*', :headers => :any, :methods => [:get, :post, :put, :patch, :options]
       end
     end
+
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

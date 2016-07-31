@@ -1,5 +1,7 @@
 class DeviceControlValuesController < ApplicationController
 
+  include ProtocolLogger
+
   respond_to :json
 
   def update
@@ -9,7 +11,7 @@ class DeviceControlValuesController < ApplicationController
     old_value = dcv.value
     set_value(dcv, params[:value])
     if dcv.save
-      logger.info("INFO **** #{dcv.control.display_name} changed from #{old_value} to #{dcv.value} ****")
+      log(old_value, dcv)
       render :json => {:status => "ok"}, :status => 200
     else
       render(json: { status: "error", message: dcv.errors }, status: 500)
